@@ -1,0 +1,20 @@
+{
+    "name": "custom-work-for-brackets",
+    "title": "Tabs - Custom Working",
+    "description": "Adds toolbar it include buttons show/hide with tabs of active documents on the top of the editor.",
+    "version": "2.0.0",
+    "homepage": "https://github.com/DH3ALEJANDRO/custom-work-for-brackets",
+    "author": "Avril Alejandro (https://twitter.com/AVRIL_ALEJANDRO)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DH3ALEJANDRO/custom-work-for-brackets.git"
+    },
+    "keywords": ["avril", "tabs", "work", "custom", "working", "toolbar", "sidebar", "document", "panel", "file"],
+    "i18n": [ "en", "es"],
+    "package-i18n": {
+        "es": {
+            "description": "Añade barra de herramientas que incluye botones de mostrar/ocultar con pestañas de documentos activos en la parte superior del editor.",
+            "title": "Pestañas - Trabajando Comodamente"
+        }
+    }
+}

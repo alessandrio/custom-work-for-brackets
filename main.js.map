@@ -1,0 +1,216 @@
+/*global define, brackets, $, scrolledBar, startOp, cloneListMenu, hidenormalizeEditor*/
+define(function (require, exports, module) {
+    "use strict";
+    var AppInit              = brackets.getModule("utils/AppInit"),
+        ExtensionUtils       = brackets.getModule("utils/ExtensionUtils"),
+        Resizer              = brackets.getModule('utils/Resizer'),
+        EditorManager        = brackets.getModule('editor/EditorManager'),
+        SidebarView          = brackets.getModule('project/SidebarView'),
+        MainViewManager      = brackets.getModule( 'view/MainViewManager' ),
+        WorkspaceManager     = brackets.getModule( 'view/WorkspaceManager' ),
+        ProjectManager       = brackets.getModule( 'project/ProjectManager' ),
+        Dialogs              = brackets.getModule("widgets/Dialogs"),
+        alerted              = "it is possible that a similar extension to this is interfering with the operation <br> Please uninstall the extensions similar to this.",
+        COMMAND_ID           = "fjkgsd.avril",
+        $sidebar             = $("#sidebar"),
+        $mainToolbar         = $('#main-toolbar');
+    ExtensionUtils.loadStyleSheet(module, "style/style.min.css");
+    var inputNone = '<input type="hidden" value="15" id="avril-val" style="display:none;">';
+    var fullbbkscreen = '<div class="btn-sidebar-bks btn-alt-quiet" id="fullScreenSidebar-avril"></div>';
+    var avrilTabs = '<div class="avril-tabs-work"></div>';
+    var boxworklist = '<div id="workfile-avril"><span></span></div>';
+    var allWorkingFiles = '<div class="all-workfile btn-alt-quiet" title="Show worklist">≡</div>';
+    var mainToolbarV = '<div id="fullmainToolbar-avril" class="btn-mainToolbar-bks btn-alt-quiet" title="Hide toolBar">»</div>';
+    var allHTMLs = inputNone + fullbbkscreen + avrilTabs + allWorkingFiles + mainToolbarV;
+    var todoFunction = '<div class="todoFunction">' + allHTMLs + '</div>' + boxworklist;
+    function showTabs() {
+        var parentAvril = $('<div>', {
+            'class': 'avril-parent-work',
+            'html': todoFunction
+        }).insertBefore($('#editor-holder'));
+        /*var avrilTabs = $('<div>', {
+            'class': 'avril-tabs-work'
+        }).appendTo($('.avril-parent-work'));
+        var $newdiv1 = $("<div>", {
+            'id': 'fullScreenSidebar',
+            'class': 'btn-sidebar-bks btn-alt-quiet'
+        }).click( startOp ).insertBefore(avrilTabs);
+        var inputNone = $('<input>', {
+            'type': 'hidden',
+            'val': 15,
+            'id': 'avril-val',
+            'style': 'display:none;'
+        }).appendTo($('.avril-parent-work'));*/
+        //$('.open-files-container').appendTo('.avril-tabs-work');
+        $('#working-set-list-container').appendTo($('.avril-tabs-work'));
+        $('.sidebar-selection').remove();
+        $('.sidebar-selection-extension').remove();
+        $('.todoFunction .scroller-shadow').remove();
+        $('.working-set-header').remove();
+        var ulItemWork = $('.avril-tabs-work ul');
+        scrolledBar(ulItemWork);
+    }
+    function hideShadws(ulItemWork){
+        ulItemWork.click(function(){
+            $('.avril-parent-work .scroller-shadow').remove();
+        });
+    }
+    function scrolledBar(ulItemWork){
+        var avalue = $('#avril-val');
+        var n = parseInt(avalue.val(), 10);
+        var amousewheel = function(e){
+            e = window.event || e;
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            var j = parseInt(avalue.val(), 10);
+            var lgo = (delta<0)?n+j:j-n;
+            var sizepach = ulItemWork[0].scrollWidth - $('.open-files-container').width();
+            var ttlgo = ( lgo > sizepach) ? sizepach : ( lgo < 0 ) ? 0 : lgo;
+            avalue.val( ttlgo );
+            var z = avalue.val();
+            $(this).scrollLeft( z );
+            e.preventDefault();
+        };
+        ulItemWork.on("mousewheel", amousewheel);
+    }
+    /*function addClassItem(){
+        dirty
+        can-close
+    }*/
+    function showDropDown(){
+        var $workfileAvril = $('#workfile-avril');
+        $workfileAvril.hide();
+        $('.all-workfile').click(function(event){
+            event.stopPropagation();
+            cloneListMenu();
+            $workfileAvril.toggle('fast');
+        });
+    }
+    function cloneListMenu(){
+        $('#workfile-avril').children().remove();
+        //$('.avril-tabs-work #working-set-list-container ul').clone(true).appendTo('#workfile-avril');
+        $('.avril-tabs-work #working-set-list-container ul').clone(true).appendTo('#workfile-avril');
+        /*window.setTimeout(function(){
+            $('#workfile-avril #working-set-list-container').attr("id", 'working-set-list-container-1');
+            $("#workfile-avril .working-set-view").attr("id", "working-set-list-first-pane-1");
+        }, 10);*/
+        $('#workfile-avril').click(hidenormalizeEditor);
+    }
+    function hidenormalizeEditor(){
+        $('#workfile-avril').hide();
+        $('#workfile-avril').children().remove();
+    }
+    $(EditorManager).on("activeEditorChange documentSaved", hidenormalizeEditor);
+/*
+ *  MainViewManager
+ *       // Event on Pane layout changed: Split Panel
+ *        .on( 'paneLayoutChange',  cloneListMenu)
+ *        // Event on file list changed
+ *      .on( 'workingSetAdd',  cloneListMenu)
+ *      .on( "workingSetMove workingSetRemoveList workingSetSort workingSetUpdate ", cloneListMenu)
+ *      .on( 'workingSetRemove',  cloneListMenu);
+ *  // Event on layout changed
+ *  WorkspaceManager.on("workspaceUpdateLayout",  cloneListMenu);
+ *  //ProjectManager.on("projectOpen projectRefresh beforeProjectClose projectClose beforeAppClose", cloneListMenu);
+*/
+    function worklists(){
+        /*$( "#workfile-avril ul li" ).click(function() {
+            $( "#workfile-avril ul li" ).each(function() {
+                $(this).find(".file-status-icon").click(function(){
+                    $(this).parent().remove();
+                });
+            });
+        });*/
+    }
+    function startOpsb() {
+        Resizer.toggle($sidebar);
+    }
+    function startOpmt() {
+        $mainToolbar.toggle( "fast" );
+        var $content = $('.content');
+        var booly = ($content.css('right')==='0px')?true:false;
+        var boocon = (booly)?30:0;
+        var htmlboo = (booly)?('»'):('«');
+        var titlteboo = (booly)?('Hide toolBar'):('Show toolBar');
+        $content.animate({
+            right: boocon
+        }, 'fast', function(){
+            $('#fullmainToolbar-avril').html(htmlboo).attr('title',titlteboo);
+        });
+    }
+    function addHTMLsb(){
+        var $sideView = $('#fullScreenSidebar-avril');
+        if(SidebarView.isVisible()){
+            $sideView.html('←').attr('title', 'Hide Sidebar').css('color', '#37b1ac');
+        } else {
+            $sideView.html('→').attr('title', 'Show Sidebar');
+        }
+        $sidebar.on("panelCollapsed", function(){
+            $sideView.html('→').attr('title', 'Show Sidebar');
+            if($sideView.css('color')){$sideView.removeAttr('style');}
+        });
+        $sidebar.on("panelExpanded",  function(){
+            $sideView.html('←').attr('title', 'Hide Sidebar').css('color', '#37b1ac');
+        });
+    }
+    function detected(){
+        window.setTimeout(function(){
+            // collapse plugin
+            var one = $('.content .working-file-tabs-container').length, //Brackets Working File Tabs
+                two = $('#editor-holder #ext-documents').length, //Documents Toolbar
+                tre = $('.content .gt-tabs').length,  //Brackets File Tabs
+                fou = $('#status-bar .extension-toolbar').length, //Extensions Toolbar Reposition
+                oneC = "<br> Brackets Working File Tabs",
+                twoC = "<br> Documents Toolbar",
+                treC = "<br> Brackets File Tabs",
+                fouC = "<br> Extensions Toolbar Reposition",
+                coll = function(){
+                if( one && !two && !tre && !fou ){
+                    return oneC;
+                } else if( two && !one && !tre && !fou ){
+                    return twoC;
+                } else if( tre && !two && !one && !fou ){
+                    return treC;
+                } else if( fou && !one && !two && !tre ){
+                    return fouC;
+                } else if ( one && two && !tre && !fou ) {
+                    return [oneC, twoC];
+                } else if ( one && tre && !two && !fou ) {
+                    return [oneC, treC];
+                } else if ( one && fou && !two && !fou ) {
+                    return [oneC, fouC];
+
+                } else if ( two && tre && !one && !fou ) {
+                    return [twoC, treC];
+                } else if ( two && fou && !one && !tre) {
+                    return [twoC, fouC];
+                } else if ( tre && fou && !one && !two ) {
+                    return [oneC, twoC];
+
+                } else if ( one && two && tre && !fou ){
+                    return [oneC, twoC, treC];
+                } else if ( one && two && fou && !tre ){
+                    return [oneC, twoC, fouC];
+                } else if ( one && tre && fou && !two ){
+                    return [oneC, treC, fouC];
+
+                } else if ( one && two && tre && fou ) {
+                    return [oneC, twoC, treC, fouC];
+                }
+            },
+                colls = coll();
+            if( one || two || tre || fou){
+                Dialogs.showModalDialog(COMMAND_ID, 'title', alerted + '<br>' + colls);
+            }
+        }, 2000);
+    }
+    var displayAll = function(){
+        showTabs();
+        showDropDown();
+        /*worklists();*/
+        $('#fullScreenSidebar-avril').click(startOpsb);
+        $('#fullmainToolbar-avril').click(startOpmt);
+        addHTMLsb();
+    };
+    AppInit.appReady(displayAll);
+    AppInit.extensionsLoaded(detected);
+});
