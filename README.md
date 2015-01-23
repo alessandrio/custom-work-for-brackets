@@ -36,7 +36,7 @@ Please post your issues, feature changes/requests of this extension using [githu
 ### Install from URL
 
   - Open the the Extension Manager from the File menu.
-  - download following url https://github.com/DH3ALEJANDRO/custom-work-for-brackets/install/custom-work-for-brackets
+  - download following url https://raw.githubusercontent.com/DH3ALEJANDRO/custom-work-for-brackets/master/install/custom-work-for-brackets.zip
   - drag & drop zip file in "Drag.zip here"
   - Done Install.
 
