@@ -34,14 +34,14 @@ Please post your issues, feature changes/requests of this extension using [githu
   - Click Install!
 
 ### Install from URL
-- Open the the Extension Manager from the File menu.
+* Open the the Extension Manager from the File menu.
 * drag & drop
-  - download following url https://raw.githubusercontent.com/DH3ALEJANDRO/custom-work-for-brackets/master/install/custom-work-for-brackets.zip
-  - drag & drop zip file in "Drag.zip here"
-  - Done Install.
+   * download following url https://raw.githubusercontent.com/DH3ALEJANDRO/custom-work-for-brackets/master/install/custom-work-for-brackets.zip
+   * drag & drop zip file in "Drag.zip here"
+   * Done Install.
 * from url
-  - Click on Install form URL...
-  - Copy and paste following URL in the text field: https://raw.githubusercontent.com/DH3ALEJANDRO/custom-work-for-brackets/master/install/custom-work-for-brackets.zip
-  - Click Install.
+   * Click on Install form URL...
+   * Copy and paste following URL in the text field: https://raw.githubusercontent.com/DH3ALEJANDRO/custom-work-for-brackets/master/install/custom-work-for-brackets.zip
+   * Click Install.
 
 > by : Avril Alejandro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*dsgdsfhdfgshyt.avril*
