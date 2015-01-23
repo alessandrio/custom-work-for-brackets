@@ -3,18 +3,25 @@ define(function (require, exports, module) {
     "use strict";
     var AppInit              = brackets.getModule("utils/AppInit"),
         ExtensionUtils       = brackets.getModule("utils/ExtensionUtils"),
-        Resizer              = brackets.getModule('utils/Resizer'),
-        EditorManager        = brackets.getModule('editor/EditorManager'),
-        SidebarView          = brackets.getModule('project/SidebarView'),
-        MainViewManager      = brackets.getModule( 'view/MainViewManager' ),
-        WorkspaceManager     = brackets.getModule( 'view/WorkspaceManager' ),
-        ProjectManager       = brackets.getModule( 'project/ProjectManager' ),
+        Resizer              = brackets.getModule("utils/Resizer"),
+        EditorManager        = brackets.getModule("editor/EditorManager"),
+        SidebarView          = brackets.getModule("project/SidebarView"),
+        MainViewManager      = brackets.getModule("view/MainViewManager"),
+        WorkspaceManager     = brackets.getModule("view/WorkspaceManager"),
+        ProjectManager       = brackets.getModule("project/ProjectManager"),
         Dialogs              = brackets.getModule("widgets/Dialogs"),
+        PreferencesManager   = brackets.getModule("preferences/PreferencesManager"),
+        prefs                = PreferencesManager.getExtensionPrefs("customToolbar"),
         alerted              = "it is possible that a similar extension to this is interfering with the operation <br> Please uninstall the extensions similar to this.",
         COMMAND_ID           = "fjkgsd.avril",
+        prefKey              = 'red',
         $sidebar             = $("#sidebar"),
-        $mainToolbar         = $('#main-toolbar');
+        $mainToolbar         = $('#main-toolbar')/*,
+        color            = require('./lib/color-min'),
+        HTML            = require('text!html/panel.html')*/;
     ExtensionUtils.loadStyleSheet(module, "style/style.min.css");
+    //load code mirror addons
+    //brackets.getModule(["extensions/default/JavaScriptQuickEdit/unittest-files/jquery-ui/ui/jquery.ui.sortable"]);
     var inputNone = '<input type="hidden" value="15" id="avril-val" style="display:none;">';
     var fullbbkscreen = '<div class="btn-sidebar-bks btn-alt-quiet" id="fullScreenSidebar-avril"></div>';
     var avrilTabs = '<div class="avril-tabs-work"></div>';
@@ -42,6 +49,8 @@ define(function (require, exports, module) {
             'style': 'display:none;'
         }).appendTo($('.avril-parent-work'));*/
         //$('.open-files-container').appendTo('.avril-tabs-work');
+        $(".working-set-splitview-btn").appendTo($(".todoFunction"));
+        $(".working-set-option-btn").appendTo($(".todoFunction"));
         $('#working-set-list-container').appendTo($('.avril-tabs-work'));
         $('.sidebar-selection').remove();
         $('.sidebar-selection-extension').remove();
@@ -112,22 +121,31 @@ define(function (require, exports, module) {
  *  WorkspaceManager.on("workspaceUpdateLayout",  cloneListMenu);
  *  //ProjectManager.on("projectOpen projectRefresh beforeProjectClose projectClose beforeAppClose", cloneListMenu);
 */
-    function worklists(){
-        /*$( "#workfile-avril ul li" ).click(function() {
+    /*function worklists(){
+        $( "#workfile-avril ul li" ).click(function() {
             $( "#workfile-avril ul li" ).each(function() {
                 $(this).find(".file-status-icon").click(function(){
                     $(this).parent().remove();
                 });
             });
-        });*/
-    }
+        });
+    }*/
     function startOpsb() {
         Resizer.toggle($sidebar);
     }
     function startOpmt() {
-        $mainToolbar.toggle( "fast" );
+        prefs.set(prefKey, !prefs.get(prefKey));
+        prefs.save();
+    }
+    prefs.definePreference(prefKey, 'boolean', 'true').on('change', function() {
         var $content = $('.content');
-        var booly = ($content.css('right')==='0px')?true:false;
+        //var booly = ($content.css('right')==='0px')?true:false;
+        var booly = prefs.get(prefKey);
+        if(booly){
+            $mainToolbar.show('fast');
+        } else {
+            $mainToolbar.hide('fast');
+        }
         var boocon = (booly)?30:0;
         var htmlboo = (booly)?('»'):('«');
         var titlteboo = (booly)?('Hide toolBar'):('Show toolBar');
@@ -136,7 +154,7 @@ define(function (require, exports, module) {
         }, 'fast', function(){
             $('#fullmainToolbar-avril').html(htmlboo).attr('title',titlteboo);
         });
-    }
+    });
     function addHTMLsb(){
         var $sideView = $('#fullScreenSidebar-avril');
         if(SidebarView.isVisible()){
@@ -199,7 +217,7 @@ define(function (require, exports, module) {
             },
                 colls = coll();
             if( one || two || tre || fou){
-                Dialogs.showModalDialog(COMMAND_ID, 'title', alerted + '<br>' + colls);
+                Dialogs.showModalDialog(COMMAND_ID, 'Tabs - Custom Working', alerted + '<br>' + colls);
             }
         }, 2000);
     }
@@ -214,3 +232,4 @@ define(function (require, exports, module) {
     AppInit.appReady(displayAll);
     AppInit.extensionsLoaded(detected);
 });
+//AppMenuBar

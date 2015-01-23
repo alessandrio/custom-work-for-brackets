@@ -2,7 +2,7 @@
     /*background: #5d5f60 #3C3F41 #4f5053 #3f424a;*/
     position: relative!important;
     white-space: nowrap;
-    z-index: 999;
+    z-index: 5;
     top: 0;
     left: 0;
 }
@@ -23,16 +23,30 @@
     position: absolute;
     overflow: hidden!important;
     top: 0;
-    left: 24px;
-    right: 49px;
+    left: 79px;
+    right: 52px;
+}
+.avril-tabs-work ul{
+    font-size: 0px;
 }
 .avril-tabs-work li{
-    display: inline-block;
-    /*margin-right: -4px;*/
+    width: intrinsic;
+    width: -moz-fit-content;
+    width: fit-content;
     margin-right: 0px;
+    font-size: 13px;
     padding: 0 26px 0 6px;
     vertical-align: top;
     transition: 0.8s;
+}
+.avril-tabs-work li, .avril-tabs-work li *{
+    word-wrap: normal!important;
+    overflow-wrap: normal!important;/* break-word paragraph roto*/
+    white-space: nowrap!important;/*line larg --------*/
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
 }
 .avril-tabs-work li:hover{
     background: #310c0f;
@@ -68,6 +82,16 @@
     margin-left: 4px;
     line-height: 20px;
 }
+.avril-parent-work .working-set-option-btn {
+    left: 51px;
+    right: auto;
+    top: 1px;
+}
+.avril-parent-work .working-set-splitview-btn {
+    left: 24px;
+    right: auto;
+    top: 1px;
+}
 .file-status-icon.dirty:before{
     line-height: 1.1em;
     color: white;
@@ -95,7 +119,7 @@
     line-height: 14px;
 }
 .all-workfile{
-    right: 23px;
+    right: 25px;
     padding: 2px 8px;
     line-height: 16px
 }
@@ -108,6 +132,9 @@
     font-family: 'Times New Roman';
     font-weight: bold;
     top: 2px;
+}
+.btn-mainToolbar-bks{
+    top: 3px;
 }
 #workfile-avril{
     position: absolute;
