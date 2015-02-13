@@ -2,9 +2,9 @@
     "name": "custom-work-for-brackets",
     "title": "Tabs - Custom Working",
     "description": "Adds toolbar it include buttons show/hide with tabs of active documents on the top of the editor.",
-    "version": "2.5.0",
+    "version": "3.0.0",
     "homepage": "https://github.com/DH3ALEJANDRO/custom-work-for-brackets",
-    "author": "Avril Alejandro (https://twitter.com/AVRIL_ALEJANDRO)",
+    "author": "Avril Alejandro > @AVRIL_ALEJANDRO",
     "repository": {
         "type": "git",
         "url": "https://github.com/DH3ALEJANDRO/custom-work-for-brackets.git"
