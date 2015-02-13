@@ -8,13 +8,18 @@ Adds toolbar it include buttons show/hide with tabs of active documents on the t
 * toggle sidebar
 * menu for all open documents.
 * ability to add styles with default theme
-* scroll bar Horizontally with mouse 
+* scroll bar Horizontally with mouse
+* support multiple panel
 
 ### screenShot
 ![ScreenShot](https://raw.githubusercontent.com/DH3ALEJANDRO/custom-work-for-brackets/master/screenshoot/normal.png)
 ![ScreenShot](https://raw.githubusercontent.com/DH3ALEJANDRO/custom-work-for-brackets/master/screenshoot/total%20example.gif)
 
 ### Change History
+* 02/12/2015
+   * add support multiple panel
+   * collision with other extension
+   * fix bugs (scroll double panel);
 * 01/23/2015
    * move > "Configure Working Set & Split the editor Vertically or Horizontally" to top bar
    * add boolean value to toolbar
@@ -44,4 +49,4 @@ Please post your issues, feature changes/requests of this extension using [githu
    * Copy and paste following URL in the text field: https://raw.githubusercontent.com/DH3ALEJANDRO/custom-work-for-brackets/master/install/custom-work-for-brackets.zip
    * Click Install.
 
-> by : Avril Alejandro&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *dsgdsfhdfgshyt.avril*
+> by : Avril Alejandro >> *dsgdsfhdfgshyt.avril*
