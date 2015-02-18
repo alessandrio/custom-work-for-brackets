@@ -16,6 +16,8 @@ Adds toolbar it include buttons show/hide with tabs of active documents on the t
 ![ScreenShot](https://raw.githubusercontent.com/DH3ALEJANDRO/custom-work-for-brackets/master/screenshoot/total%20example.gif)
 
 ### Change History
+* 02/18/2015
+  * solved the problem for update
 * 02/12/2015
    * add support multiple panel
    * collision with other extension
