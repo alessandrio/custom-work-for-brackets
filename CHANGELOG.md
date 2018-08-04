@@ -1,3 +1,4 @@
+### Change History
 * v5.2.0 (08/03/2018):
   * tab collapse in no scrolling mode.
   * option to enable middle circle on the right side in order to superimpose the sidebar if it is hidden.
@@ -75,4 +76,3 @@
    * fix style `z-index` (linux)
 * v2.0.0 (01/18/2015):
    * Initial code
-### Change History
